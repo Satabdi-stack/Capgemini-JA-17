@@ -1,4 +1,4 @@
-package com.cg.eis.pl;
+package com.cap;
 
 import com.cg.eis.service.EmployeeService;
 
