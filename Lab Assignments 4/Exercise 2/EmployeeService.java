@@ -1,4 +1,4 @@
-package com.cg.eis.service;
+package com.cap;
 
 import java.util.Scanner;
 
