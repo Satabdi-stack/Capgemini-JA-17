@@ -1,0 +1,91 @@
+package capgemini.code;
+
+import java.util.Scanner;
+
+public class Product {
+	private int pid;
+	private String pname;
+	private double price;
+	
+	public Product() {super();}
+	public Product(int pid, String pname, double price) {
+		this.pid = pid;
+		this.pname = pname;
+		this.price = price;
+	}
+	
+//	Getters
+	public int getPId() { return pid; }
+	public String getPname() { return pname; }
+	public double getPrice() { return price; }
+	
+//	Setters
+	public void setPId(int pid) { this.pid = pid; }
+	public void setPname(String pname) { this.pname = pname; }
+	public void setPrice(double price) { this.price = price; }
+	
+//	Methods
+	public void displayProductDetails(Product p) { System.out.println("Product ID = " + p.getPId() + ", Product name = " + p.getPname() + ", Product price = " + p.getPrice() + "\n"); }
+
+	public void displayProductDetails(Product[] p) {
+		for (int i = 0; i < p.length; i++) 
+			System.out.println("Product ID = " + p[i].getPId() + "Product name = " + p[i].getPname() + ", Product price = " + p[i].getPrice() + "\n");
+	}
+	
+	public void findProductById(Product[] p, int pid) {
+		for(int i = 0; i < p.length; i++) {
+			if(p[i].getPId() == pid)
+			{
+				System.out.println("Product found at " + i);
+				System.out.println("Product ID = " + p[i].getPId() + ", Product name = " + p[i].getPname() + ", Product price = " + p[i].getPrice() + "\n");
+				break;
+			}else {
+				System.out.println("No product found\n");
+			}
+		}
+	}
+	
+	   Scanner sc = new Scanner(System.in);
+	   Product[] pList1 = new Product[3];
+	   public Product[] createProdList() {
+		   for(int i = 0; i < pList1.length; i++) {
+			   System.out.println("Enter the product details for  "+ i + " prod object");
+			   pList1[i] = new Product();
+			   pList1[i].setPId(sc.nextInt());
+			   pList1[i].setPname(sc.next());
+		   }
+		   return pList1;
+	}
+
+	public void updateProductById(Product[] p,int pid) {
+		for(int i = 0; i < p.length; i++) {
+			if( p[i].getPId() == pid)
+			{
+				System.out.println("Product found at " + i);
+				System.out.println("Enter new name to update for the Product");
+				String updatedname = sc.next();
+				p[i].setPname(updatedname);
+				System.out.println("Product ID = " + p[i].getPId() + ", Product name = " + p[i].getPname() + ", Product price = " + p[i].getPrice() + "\n");
+				break;
+			}else {
+				System.out.println("No product found\n");
+			}
+		}
+	}
+	
+		public Product[] deleteProductById(Product[] p,int pid) {
+			int originalLength = p.length;
+			for(int i = 0; i < originalLength; i++) {
+				if(p[i].getPId() == pid)
+				{
+					System.out.println("Product found at " + i + "\n");
+					p[i] = p[originalLength-1];
+					originalLength--;
+					break;
+				} else {
+					System.out.println("No Product found\n");
+				}
+			}
+			return p;
+		}
+}
