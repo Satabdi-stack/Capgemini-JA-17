@@ -1,5 +1,9 @@
 package lab9;
 
-public class FactorialUsingLambdaExpression {
 
+@FunctionalInterface
+public interface FactorialUsingLambdaExpression {
+
+	// function to calculate factorial of a number
+	int factorial(int number);
 }
